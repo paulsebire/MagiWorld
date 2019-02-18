@@ -7,12 +7,29 @@ public class Player {
     private int agility;
     private int intel;
     private int stamina;
+    private int nbPlayer;
+
+
 
     public Player(){
+        this.role=role;
+        this.nbPlayer=nbPlayer;
+        this.lvl=lvl;
+        this.strength=strength;
+        this.agility=agility;
+        this.intel=intel;
+        this.stamina=stamina;
 
 
     }
 
+    public int getNbPlayer() {
+        return nbPlayer;
+    }
+
+    public void setNbPlayer(int nbplayer) {
+        this.nbPlayer = nbplayer;
+    }
     public int getRole() {
         return role;
     }
