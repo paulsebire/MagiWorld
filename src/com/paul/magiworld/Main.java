@@ -28,7 +28,9 @@ public class Main {
         while(player1.getStamina()!=0||player2.getStamina()!=0){
 
             fight(player1,player2);
+            if (player2.getStamina()==0)return;
             fight(player2,player1);
+            if (player1.getStamina()==0)return;
         }
 
     }
@@ -44,16 +46,16 @@ public class Main {
         int intel;
         int stamina;
         do{
-        System.out.println("Veuillez choisir la classe de votre personnage (1: Guerrier, 2: Rôdeur, 3: Mage)");
-        role=getTheNumber(3);
+        System.out.println("Joueur "+nbPlayer+": Veuillez choisir la classe de votre personnage (1: Guerrier, 2: Rôdeur, 3: Mage)");
+        role=getTheNumber(1,3);
         System.out.println("Niveau du personnage ?");
-        lvl=getTheNumber(100);
+        lvl=getTheNumber(1,100);
         System.out.println("Force du personnage ?");
-        strength=getTheNumber(100);
+        strength=getTheNumber(0,100);
         System.out.println("Agilité  du personnage ?");
-        agility=getTheNumber(100);
+        agility=getTheNumber(0,100);
         System.out.println("Intelligence du personnage ?");
-        intel=getTheNumber(100);
+        intel=getTheNumber(0,100);
         stamina=lvl*5;
 
         switch (role){
@@ -68,30 +70,31 @@ public class Main {
                     break;
         }
 
-        System.out.println(intro +"je suis le "+ roleStr+" Joueur "+nbPlayer+" de niveau "+lvl+" je possède " + stamina+" de vitalité, "
-                + strength+" de force, "+agility+" d'agilité et "+intel+" d'intelligence.");
+
 
         if (strength+agility+intel!=lvl)
             System.out.println("La somme de la force, de l'agilité et de l'intelligence doit être égale au niveau du personnage");
+        else System.out.println(intro +"je suis le "+ roleStr+" Joueur "+nbPlayer+" de niveau "+lvl+" je possède " + stamina+" de vitalité, "
+                + strength+" de force, "+agility+" d'agilité et "+intel+" d'intelligence.");
 
         }while (strength+agility+intel!=lvl);
         return new Player(role,lvl,strength,agility,intel,stamina,nbPlayer);
     }
-    static private int getTheNumber(int max){
+    static private int getTheNumber(int min,int max){
         boolean responseIsGood;
         int number=0;
     do {
         try {
             number = sc.nextInt();
-            if  (number>=1 && number<=max)responseIsGood = true;
+            if  (number>=min && number<=max)responseIsGood = true;
             else {
                 responseIsGood = false;
-                System.out.println("Veuillez saisir un nombre compris  entre 1 et "+max);
+                System.out.println("Veuillez saisir un nombre compris  entre "+min+" et "+max);
             }
         } catch (InputMismatchException e) {
             sc.next();
             responseIsGood = false;
-            System.out.println("Veuillez saisir un nombre compris entre 1 et "+max);
+            System.out.println("Veuillez saisir un nombre compris entre "+min+" et "+max);
         }
     }while (!responseIsGood) ;
     return number;
@@ -136,6 +139,7 @@ public class Main {
             if (playerDef.getStamina()==0){
                 System.out.println("Joueur "+playerDef.getNbPlayer()+ " est mort");
                 System.out.println("Joueur "+playerDef.getNbPlayer()+ " a perdu");
+
             }
     }
 }

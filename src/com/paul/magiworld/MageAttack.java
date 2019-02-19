@@ -13,6 +13,6 @@ public class MageAttack extends TypesOfAttack {
     public void specialAttack(Player playerAtk, Player playerDef) {
         playerAtk.setStamina(playerAtk.getStamina()+2*playerAtk.getIntel());
         if (playerAtk.getStamina()>playerAtk.getStaminaBegin())playerAtk.setStamina(playerAtk.getStaminaBegin());
-        System.out.println("Joueur "+playerAtk.getNbPlayer()+" utilise Soin et gagne "+playerAtk.getIntel()*2+ " points de vie (sur "+playerAtk.getStaminaBegin()+" d'agilité au total");
+        System.out.println("Joueur "+playerAtk.getNbPlayer()+" utilise Soin et gagne "+playerAtk.getIntel()*2+ " points de vie (sur "+playerAtk.getStaminaBegin()+" points de vie au total)");
     }
 }
