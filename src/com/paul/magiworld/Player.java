@@ -8,6 +8,7 @@ public class Player {
     private int intel;
     private int stamina;
     private int nbPlayer;
+    private int staminaBegin;
 
 
     public Player(int role, int lvl, int strength, int agility, int intel, int stamina, int nbPlayer) {
@@ -18,6 +19,15 @@ public class Player {
         this.intel = intel;
         this.stamina = stamina;
         this.nbPlayer = nbPlayer;
+        this.staminaBegin = stamina;
+    }
+
+    public int getStaminaBegin() {
+        return staminaBegin;
+    }
+
+    public void setStaminaBegin(int staminaBegin) {
+        this.staminaBegin = staminaBegin;
     }
 
     public int getNbPlayer() {
