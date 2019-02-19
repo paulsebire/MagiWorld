@@ -1,7 +1,5 @@
 package com.paul.magiworld;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -11,6 +9,7 @@ public class Main {
 
     static private Player player1;
     static private Player player2;
+
     static private WarAttack warAttack= new WarAttack();
     static private RogueAttack rogueAttack = new RogueAttack();
     static private MageAttack mageAttack = new MageAttack();
@@ -70,8 +69,6 @@ public class Main {
                     break;
         }
 
-
-
         if (strength+agility+intel!=lvl)
             System.out.println("La somme de la force, de l'agilité et de l'intelligence doit être égale au niveau du personnage");
         else System.out.println(intro +"je suis le "+ roleStr+" Joueur "+nbPlayer+" de niveau "+lvl+" je possède " + stamina+" de vitalité, "
@@ -100,31 +97,10 @@ public class Main {
     return number;
 }
 
-
-    static private int getTheAttack(Player player){
-        System.out.println("joueur "+player.getNbPlayer()+" ("+player.getStamina()+" Vitalité) Veuillez choisir votre action (1: Attaque Basique, 2: Attaque Spéciale)");
-        boolean responseIsGood;
-        int number=0;
-        do {
-            try {
-                number = sc.nextInt();
-                if  (number>=1 && number<=2)responseIsGood = true;
-                else {
-                    responseIsGood = false;
-                    System.out.println("Veuillez saisir un nombre compris  entre 1 et 2");
-                }
-            } catch (InputMismatchException e) {
-                sc.next();
-                responseIsGood = false;
-                System.out.println("Veuillez saisir un nombre compris entre 1 et 2");
-            }
-        }while (!responseIsGood) ;
-        return number;
-    }
     static private void fight (Player playerAtk, Player playerDef){
-        int atk=0;
-
-            atk=getTheAttack(playerAtk);
+        int atk;
+        System.out.println("joueur "+playerAtk.getNbPlayer()+" ("+playerAtk.getStamina()+" Vitalité) Veuillez choisir votre action (1: Attaque Basique, 2: Attaque Spéciale)");
+            atk=getTheNumber(1,2);
             switch (playerAtk.getRole()){
                 case 1: if (atk==1)warAttack.basicAttack(playerAtk,playerDef);
                         else warAttack.specialAttack(playerAtk,playerDef);
