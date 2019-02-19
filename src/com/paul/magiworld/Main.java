@@ -11,9 +11,12 @@ public class Main {
 
     static private Player player1;
     static private Player player2;
+    static private WarAttack warAttack= new WarAttack();
+    static private RogueAttack rogueAttack = new RogueAttack();
+    static private MageAttack mageAttack = new MageAttack();
 
     public static void main(String[] args) {
-        int atk=0;
+
 
         System.out.println("Création du personnage du Joueur 1");
         player1=createChar(1);
@@ -21,11 +24,12 @@ public class Main {
         player2=createChar(2);
 
         System.out.println("LE COMBAT COMMENCE");
+        do {
 
-        do{
-            atk=getTheAttack(player1);
-
+            fight(player1,player2);
+            fight(player2,player1);
         }while(player1.getStamina()!=0||player2.getStamina()!=0);
+
     }
 
 
@@ -112,5 +116,21 @@ public class Main {
             }
         }while (!responseIsGood) ;
         return number;
+    }
+    static private void fight (Player playerAtk, Player playerDef){
+        int atk=0;
+
+            atk=getTheAttack(playerAtk);
+            switch (playerAtk.getRole()){
+                case 1: if (atk==1)warAttack.basicAttack(playerAtk,playerDef);
+                        else warAttack.specialAttack(playerAtk,playerDef);
+                        break;
+                case 2: if (atk==1)rogueAttack.basicAttack(playerAtk,playerDef);
+                        else rogueAttack.specialAttack(playerAtk,playerDef);
+                        break;
+                case 3: if (atk==1)mageAttack.basicAttack(playerAtk,playerDef);
+                        else mageAttack.specialAttack(playerAtk,playerDef);
+                        break;
+            }
     }
 }
