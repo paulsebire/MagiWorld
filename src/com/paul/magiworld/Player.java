@@ -10,26 +10,24 @@ public class Player {
     private int nbPlayer;
 
 
-
-    public Player(){
-        this.role=role;
-        this.nbPlayer=nbPlayer;
-        this.lvl=lvl;
-        this.strength=strength;
-        this.agility=agility;
-        this.intel=intel;
-        this.stamina=stamina;
-
-
+    public Player(int role, int lvl, int strength, int agility, int intel, int stamina, int nbPlayer) {
+        this.role = role;
+        this.lvl = lvl;
+        this.strength = strength;
+        this.agility = agility;
+        this.intel = intel;
+        this.stamina = stamina;
+        this.nbPlayer = nbPlayer;
     }
 
     public int getNbPlayer() {
         return nbPlayer;
     }
 
-    public void setNbPlayer(int nbplayer) {
-        this.nbPlayer = nbplayer;
+    public void setNbPlayer(int nbPlayer) {
+        this.nbPlayer = nbPlayer;
     }
+
     public int getRole() {
         return role;
     }
@@ -77,4 +75,5 @@ public class Player {
     public void setStamina(int stamina) {
         this.stamina = stamina;
     }
+
 }
