@@ -24,11 +24,12 @@ public class Main {
         player2=createChar(2);
 
         System.out.println("LE COMBAT COMMENCE");
-        do {
+
+        while(player1.getStamina()!=0||player2.getStamina()!=0){
 
             fight(player1,player2);
             fight(player2,player1);
-        }while(player1.getStamina()!=0||player2.getStamina()!=0);
+        }
 
     }
 
@@ -98,7 +99,7 @@ public class Main {
 
 
     static private int getTheAttack(Player player){
-        System.out.println("joueur "+player.getNbPlayer()+" ("+player.getStamina()+" Vitalité) Veuillez choisir votre action (1: Attaque Basique, 2: Attaque Spéciale");
+        System.out.println("joueur "+player.getNbPlayer()+" ("+player.getStamina()+" Vitalité) Veuillez choisir votre action (1: Attaque Basique, 2: Attaque Spéciale)");
         boolean responseIsGood;
         int number=0;
         do {
@@ -131,6 +132,10 @@ public class Main {
                 case 3: if (atk==1)mageAttack.basicAttack(playerAtk,playerDef);
                         else mageAttack.specialAttack(playerAtk,playerDef);
                         break;
+            }
+            if (playerDef.getStamina()==0){
+                System.out.println("Joueur "+playerDef.getNbPlayer()+ " est mort");
+                System.out.println("Joueur "+playerDef.getNbPlayer()+ " a perdu");
             }
     }
 }

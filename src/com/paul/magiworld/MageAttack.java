@@ -6,7 +6,7 @@ public class MageAttack extends TypesOfAttack {
     public void basicAttack(Player playerAtk, Player playerDef) {
         playerDef.setStamina(playerDef.getStamina()-playerAtk.getIntel());
         System.out.println("Joueur "+playerAtk.getNbPlayer()+" utilise Boule de feu et inflige "+playerAtk.getIntel()+ " dommages");
-        System.out.println("Joueur "+playerDef.getNbPlayer()+ "perd "+playerAtk.getIntel()+" points de vie");
+        System.out.println("Joueur "+playerDef.getNbPlayer()+ " perd "+playerAtk.getIntel()+" points de vie");
     }
 
     @Override

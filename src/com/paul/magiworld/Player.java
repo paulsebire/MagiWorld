@@ -83,6 +83,7 @@ public class Player {
     }
 
     public void setStamina(int stamina) {
+        if (stamina<=0)stamina=0;
         this.stamina = stamina;
     }
 
